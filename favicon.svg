@@ -1,4 +1,32 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <circle cx="50" cy="50" r="45" fill="#FF6B6B" stroke="#2C2C2C" stroke-width="4"/>
-  <text x="50" y="65" text-anchor="middle" font-size="50">✦</text>
+  <!-- Background circle -->
+  <circle cx="50" cy="50" r="48" fill="#071e13"/>
+
+  <!-- Body -->
+  <ellipse cx="50" cy="58" rx="26" ry="20" fill="#5dbb63"/>
+
+  <!-- Belly -->
+  <ellipse cx="50" cy="62" rx="16" ry="13" fill="#a0d4a5"/>
+
+  <!-- Head -->
+  <ellipse cx="50" cy="42" rx="22" ry="18" fill="#5dbb63"/>
+
+  <!-- Eye bumps -->
+  <circle cx="38" cy="32" r="8" fill="#5dbb63"/>
+  <circle cx="62" cy="32" r="8" fill="#5dbb63"/>
+
+  <!-- Eyes white -->
+  <circle cx="38" cy="31" r="6" fill="#f0f090"/>
+  <circle cx="62" cy="31" r="6" fill="#f0f090"/>
+
+  <!-- Pupils -->
+  <circle cx="39" cy="31" r="3.5" fill="#111"/>
+  <circle cx="63" cy="31" r="3.5" fill="#111"/>
+
+  <!-- Eye shine -->
+  <circle cx="40" cy="29.5" r="1.2" fill="#fff"/>
+  <circle cx="64" cy="29.5" r="1.2" fill="#fff"/>
+
+  <!-- Mouth -->
+  <path d="M40 52 Q50 58 60 52" stroke="#2d7a4a" stroke-width="2" fill="none" stroke-linecap="round"/>
 </svg>
