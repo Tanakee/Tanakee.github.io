@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import Pond from '../components/Pond.jsx'
 
 export default function Contact() {
   return (
@@ -26,6 +27,11 @@ export default function Contact() {
           GitHub で連絡する
         </a>
       </motion.div>
+
+      <Pond
+        className="mx-auto mt-16 w-72 md:absolute md:bottom-12 md:left-[4%] md:mt-0 md:w-[24rem]"
+        leaves={[{ x: -0.8, z: 0.2, size: 0.9, rotate: 2.5 }]}
+      />
 
       <footer className="mt-24 text-center text-xs text-pond-muted/70">
         © {new Date().getFullYear()} Tanakee

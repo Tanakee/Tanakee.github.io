@@ -32,6 +32,7 @@ export default function LilyPad({ work }) {
   }
 
   return (
+    // the card spans 6 rows of the parent grid via subgrid: header, title, award, summary, tags, links
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -40,19 +41,23 @@ export default function LilyPad({ work }) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ rotateX: springX, rotateY: springY, transformPerspective: 900 }}
-      className="flex flex-col rounded-3xl border border-pond-line bg-pond-surface p-7 shadow-card transition-shadow duration-300 hover:shadow-soft"
+      className="row-span-6 grid grid-rows-subgrid gap-y-0 rounded-3xl border border-pond-line bg-pond-surface p-7 shadow-card transition-shadow duration-300 hover:shadow-soft"
     >
       <div className="flex items-start justify-between">
         <LeafIcon />
-        <p className="text-right font-display text-[11px] uppercase tracking-wider text-pond-muted">
+        <p className="text-right font-display text-[11px] tracking-wider text-pond-muted">
           {work.event}
         </p>
       </div>
 
       <h3 className="mt-4 font-display text-xl font-bold text-pond-text">{work.title}</h3>
+      {/* always rendered so every card keeps the same rows and they line up across the grid */}
+      <p className="mt-1 font-display text-xs font-bold text-pond-pink">
+        {work.award && `受賞：${work.award}`}
+      </p>
       <p className="mt-3 text-sm leading-relaxed text-pond-muted">{work.summary}</p>
 
-      <div className="mt-4 flex flex-wrap gap-2">
+      <div className="mt-4 flex flex-wrap content-start gap-2">
         {work.tags.map((tag) => (
           <span
             key={tag}

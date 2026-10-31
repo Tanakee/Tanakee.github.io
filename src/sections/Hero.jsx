@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import Pond from '../components/Pond.jsx'
 
 export default function Hero() {
   return (
@@ -21,6 +22,14 @@ export default function Hero() {
           画面のどこかにいるカエルをクリックしてみてください。
         </p>
       </motion.div>
+
+      <Pond
+        className="absolute bottom-24 right-[4%] w-72 md:bottom-16 md:w-[30rem]"
+        leaves={[
+          { x: 0.9, z: 0.35, size: 1, rotate: 0.4 },
+          { x: 0.35, z: 0.6, size: 0.65, rotate: -0.8 },
+        ]}
+      />
 
       <a href="#works" className="text-link relative z-10 mb-10">
         Works を見る ↓
