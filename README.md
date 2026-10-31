@@ -1,6 +1,6 @@
 # Tanakee's Portfolio
 
-雨の降る蓮池をテーマにしたインタラクティブなポートフォリオサイト。React + Three.js（水面シェーダー）+ SVG/Framer Motionのカエル・蓮の葉で構成しています。
+カエルと小さな池をテーマにしたインタラクティブなポートフォリオサイト。Astro（静的出力）+ Tailwind CSS v4 で構成し、カエルと池は React Three Fiber のアイランドとして動かしています。
 
 ## 開発
 

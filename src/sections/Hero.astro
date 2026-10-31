@@ -1,0 +1,26 @@
+---
+import Pond from '../components/Pond.jsx'
+---
+
+<section id="hero" class="relative flex h-screen flex-col items-center justify-between overflow-hidden bg-pond-bg pt-28">
+  <div class="hero-intro relative z-10 flex flex-col items-center px-6 text-center">
+    <p class="font-display text-xs uppercase tracking-[0.3em] text-pond-muted">Portfolio</p>
+    <h1 class="mt-3 font-display text-5xl font-extrabold text-pond-text md:text-7xl">Tanakee</h1>
+    <p class="mt-4 max-w-md text-base text-pond-muted md:text-lg">
+      フロントエンド開発者。ハッカソンの制作物を紹介しています。
+      <br />
+      画面のどこかにいるカエルをクリックしてみてください。
+    </p>
+  </div>
+
+  <Pond
+    client:load
+    className="absolute bottom-24 right-[4%] w-72 md:bottom-16 md:w-[30rem]"
+    leaves={[
+      { x: 0.9, z: 0.35, size: 1, rotate: 0.4 },
+      { x: 0.35, z: 0.6, size: 0.65, rotate: -0.8 },
+    ]}
+  />
+
+  <a href="#works" class="text-link relative z-10 mb-10">Works を見る ↓</a>
+</section>

@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { OrthographicCamera } from '@react-three/drei'
-import { useInView, useReducedMotion } from 'framer-motion'
 import * as THREE from 'three'
 import { registerPond } from './pondRegistry.js'
 
@@ -63,6 +62,31 @@ function pointInPolygon(x, y, points) {
     }
   }
   return inside
+}
+
+// whether the element is within `margin` of the viewport; the canvas only renders then
+function useInView(ref, margin) {
+  const [inView, setInView] = useState(false)
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), {
+      rootMargin: margin,
+    })
+    observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [ref, margin])
+  return inView
+}
+
+function useReducedMotion() {
+  const [reduce, setReduce] = useState(false)
+  useEffect(() => {
+    const query = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const update = () => setReduce(query.matches)
+    update()
+    query.addEventListener('change', update)
+    return () => query.removeEventListener('change', update)
+  }, [])
+  return reduce
 }
 
 function CameraFit() {
@@ -279,7 +303,7 @@ function PondScene({ leaves, rain }) {
 
 export default function Pond({ className = '', leaves = [] }) {
   const wrapperRef = useRef(null)
-  const inView = useInView(wrapperRef, { margin: '100px' })
+  const inView = useInView(wrapperRef, '100px')
   const reduceMotion = useReducedMotion()
 
   return (

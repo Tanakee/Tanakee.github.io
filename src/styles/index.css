@@ -40,6 +40,37 @@ body {
   @apply inline-flex items-center gap-1 text-sm font-bold text-pond-greenDark underline decoration-pond-green/40 decoration-2 underline-offset-4 transition-colors hover:text-pond-green;
 }
 
+/* scroll-in fade; elements stay visible when the script never runs */
+.js [data-reveal] {
+  opacity: 0;
+  translate: 0 var(--reveal-y, 24px);
+  transition:
+    opacity var(--reveal-duration, 0.5s) ease-out,
+    translate var(--reveal-duration, 0.5s) ease-out,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s;
+}
+
+.js [data-reveal].is-revealed {
+  opacity: 1;
+  translate: 0 0;
+}
+
+[data-tilt] {
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s;
+}
+
+.hero-intro {
+  animation: hero-intro 0.7s ease-out both;
+}
+
+@keyframes hero-intro {
+  from {
+    opacity: 0;
+    translate: 0 -16px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
