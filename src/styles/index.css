@@ -1,6 +1,21 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --color-pond-bg: #faf9f4;
+  --color-pond-surface: #ffffff;
+  --color-pond-green: #4f9d5a;
+  --color-pond-greenDark: #2f6b3a;
+  --color-pond-pink: #e87a9f;
+  --color-pond-text: #233229;
+  --color-pond-muted: #6b7a70;
+  --color-pond-line: #e7e3d8;
+
+  --shadow-soft: 0 20px 45px -20px rgba(47, 107, 58, 0.25);
+  --shadow-card: 0 12px 30px -12px rgba(35, 50, 41, 0.12);
+
+  --font-display: 'M PLUS Rounded 1c', sans-serif;
+  --font-body: 'Nunito', sans-serif;
+}
 
 html {
   scroll-behavior: smooth;
@@ -13,16 +28,16 @@ body {
   overflow-x: hidden;
 }
 
-@layer utilities {
-  .leaf-btn {
-    @apply inline-flex items-center gap-2 rounded-full bg-pond-green px-6 py-3 font-display text-sm font-bold text-white transition-transform duration-200 hover:scale-105 hover:bg-pond-greenDark;
-  }
-  .pink-btn {
-    @apply inline-flex items-center gap-2 rounded-full border-2 border-pond-pink px-6 py-3 font-display text-sm font-bold text-pond-pink transition-transform duration-200 hover:scale-105 hover:bg-pond-pink/10;
-  }
-  .text-link {
-    @apply inline-flex items-center gap-1 text-sm font-bold text-pond-greenDark underline decoration-pond-green/40 decoration-2 underline-offset-4 transition-colors hover:text-pond-green;
-  }
+@utility leaf-btn {
+  @apply inline-flex items-center gap-2 rounded-full bg-pond-green px-6 py-3 font-display text-sm font-bold text-white transition-transform duration-200 hover:scale-105 hover:bg-pond-greenDark;
+}
+
+@utility pink-btn {
+  @apply inline-flex items-center gap-2 rounded-full border-2 border-pond-pink px-6 py-3 font-display text-sm font-bold text-pond-pink transition-transform duration-200 hover:scale-105 hover:bg-pond-pink/10;
+}
+
+@utility text-link {
+  @apply inline-flex items-center gap-1 text-sm font-bold text-pond-greenDark underline decoration-pond-green/40 decoration-2 underline-offset-4 transition-colors hover:text-pond-green;
 }
 
 @media (prefers-reduced-motion: reduce) {

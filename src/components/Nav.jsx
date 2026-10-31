@@ -6,7 +6,7 @@ const links = [
 
 export default function Nav() {
   return (
-    <nav className="fixed inset-x-0 top-0 z-50 flex items-center justify-between bg-pond-bg/80 px-6 py-5 backdrop-blur-sm md:px-12">
+    <nav className="fixed inset-x-0 top-0 z-50 flex items-center justify-between bg-pond-bg/80 px-6 py-5 backdrop-blur-xs md:px-12">
       <a href="#hero" className="font-display text-lg font-bold text-pond-text">
         tanakee
       </a>
