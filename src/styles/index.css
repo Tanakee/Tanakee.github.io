@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
 @theme {
   --color-pond-bg: #faf9f4;
@@ -38,6 +39,55 @@ body {
 
 @utility text-link {
   @apply inline-flex items-center gap-1 text-sm font-bold text-pond-greenDark underline decoration-pond-green/40 decoration-2 underline-offset-4 transition-colors hover:text-pond-green;
+}
+
+/* article body: typography plugin, recolored to the pond palette */
+.prose-pond {
+  --tw-prose-body: var(--color-pond-text);
+  --tw-prose-headings: var(--color-pond-text);
+  --tw-prose-links: var(--color-pond-greenDark);
+  --tw-prose-bold: var(--color-pond-text);
+  --tw-prose-counters: var(--color-pond-muted);
+  --tw-prose-bullets: var(--color-pond-green);
+  --tw-prose-hr: var(--color-pond-line);
+  --tw-prose-quotes: var(--color-pond-muted);
+  --tw-prose-quote-borders: var(--color-pond-green);
+  --tw-prose-captions: var(--color-pond-muted);
+  --tw-prose-code: var(--color-pond-greenDark);
+  --tw-prose-th-borders: var(--color-pond-line);
+  --tw-prose-td-borders: var(--color-pond-line);
+  line-height: 1.9;
+}
+
+.prose-pond :where(h2, h3, h4) {
+  font-family: var(--font-display);
+}
+
+.prose-pond :where(a) {
+  text-decoration-color: color-mix(in srgb, var(--color-pond-green) 40%, transparent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.prose-pond :where(img) {
+  border-radius: 1rem;
+}
+
+.prose-pond :where(:not(pre) > code) {
+  border-radius: 0.375rem;
+  background: var(--color-pond-surface);
+  padding: 0.15em 0.4em;
+  font-weight: 600;
+}
+
+.prose-pond :where(:not(pre) > code)::before,
+.prose-pond :where(:not(pre) > code)::after {
+  content: none;
+}
+
+.prose-pond :where(pre) {
+  border: 1px solid var(--color-pond-line);
+  border-radius: 1rem;
 }
 
 /* scroll-in fade; elements stay visible when the script never runs */
