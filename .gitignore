@@ -6,3 +6,12 @@ dist
 .env
 .env.*
 !.env.example
+# blog photos live in R2 (see scripts/images.mjs); only the manifest is committed
+src/content/blog/**/*.jpg
+src/content/blog/**/*.jpeg
+src/content/blog/**/*.JPG
+src/content/blog/**/*.png
+src/content/blog/**/*.webp
+src/content/blog/**/*.avif
+src/content/blog/**/*.gif
+src/content/blog/**/*.heic

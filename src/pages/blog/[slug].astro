@@ -4,6 +4,10 @@ import { render } from 'astro:content'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import Nav from '../../components/Nav.astro'
 import { formatDate, getPosts } from '../../lib/posts.js'
+import { findImage, imageKey, pictureHtml } from '../../lib/r2-images.js'
+
+// covers that haven't been uploaded yet are rendered from disk (only exists locally)
+const localImages = import.meta.glob('/src/content/blog/*/*.{jpg,jpeg,png,webp,avif,gif}', { eager: true, import: 'default' })
 
 export async function getStaticPaths() {
   const posts = await getPosts()
@@ -13,6 +17,12 @@ export async function getStaticPaths() {
 const { post } = Astro.props
 const { title, description, date, updated, tags, cover, draft } = post.data
 const { Content } = await render(post)
+
+const coverEntry = cover ? findImage(post.id, cover) : null
+const localCover = cover && !coverEntry ? localImages[`/src/content/blog/${imageKey(post.id, cover)}`] : null
+if (cover && !coverEntry && !localCover) {
+  throw new Error(`${post.id}: cover ${cover} is neither uploaded nor on disk. Run \`npm run images\`.`)
+}
 ---
 
 <BaseLayout title={`${title} | Tanakee`} description={description} ogImage={`/og/${post.id}.png`} ogType="article">
@@ -38,7 +48,8 @@ const { Content } = await render(post)
         }
       </header>
 
-      {cover && <Image src={cover} alt="" class="mb-12 w-full rounded-3xl shadow-card" widths={[640, 960, 1344]} sizes="(min-width: 720px) 672px, 100vw" />}
+      {coverEntry && <div class="mb-12" set:html={pictureHtml(coverEntry, { className: 'w-full rounded-3xl shadow-card', eager: true })} />}
+      {localCover && <Image src={localCover} alt="" class="mb-12 w-full rounded-3xl shadow-card" widths={[640, 960, 1344]} sizes="(min-width: 720px) 672px, 100vw" loading="eager" />}
 
       <div class="prose-pond prose max-w-none">
         <Content />

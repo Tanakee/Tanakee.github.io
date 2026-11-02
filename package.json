@@ -6,9 +6,11 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "images": "node --env-file=.env scripts/images.mjs"
   },
   "dependencies": {
+    "@astrojs/markdown-satteri": "^0.4.6",
     "@astrojs/react": "^7.1.2",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
@@ -19,11 +21,14 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "satori": "^0.63.2",
+    "satteri": "^0.10.5",
     "three": "^0.169.0"
   },
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.1161.0",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.3",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4.3.3"
   }
 }

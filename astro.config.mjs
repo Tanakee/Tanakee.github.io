@@ -2,6 +2,8 @@ import { defineConfig } from 'astro/config'
 import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
 import tailwindcss from '@tailwindcss/vite'
+import { satteri } from '@astrojs/markdown-satteri'
+import { r2Images } from './src/lib/markdown-r2-images.js'
 
 export default defineConfig({
   site: 'https://tanakee.com',
@@ -13,6 +15,7 @@ export default defineConfig({
     responsiveStyles: true,
   },
   markdown: {
+    processor: satteri({ mdastPlugins: [r2Images] }),
     shikiConfig: {
       theme: 'github-light',
     },
