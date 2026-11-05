@@ -9,8 +9,7 @@ import Pond from '../components/Pond.jsx'
     <p class="mt-4 text-base text-pond-muted">新しいプロダクトの話やハッカソンのお誘いなど、お気軽にどうぞ。</p>
     <!-- the address is assembled in the browser so it never appears in the HTML for scrapers -->
     <div class="mt-8 flex flex-wrap justify-center gap-4" data-email={['moc.liamg', '10etak.akanat'].join('|')}>
-      <a href="#contact" class="leaf-btn" data-email-link>メールで連絡する</a>
-      <button type="button" class="outline-btn cursor-pointer" data-email-copy>アドレスをコピー</button>
+      <button type="button" class="leaf-btn cursor-pointer" data-email-copy>メールアドレスをコピー</button>
     </div>
     <p class="mt-2 h-5 font-display text-xs text-pond-muted" aria-live="polite" data-email-status></p>
     <ul class="mt-6 flex flex-wrap justify-center gap-4">
@@ -38,7 +37,6 @@ import Pond from '../components/Pond.jsx'
   const address = `${user}@${domain}`
   const status = document.querySelector('[data-email-status]')
 
-  box.querySelector('[data-email-link]').href = `mailto:${address}`
   box.querySelector('[data-email-copy]').addEventListener('click', async () => {
     try {
       await navigator.clipboard.writeText(address)
