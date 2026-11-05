@@ -8,11 +8,10 @@ import Pond from '../components/Pond.jsx'
     <h2 class="mt-3 font-display text-3xl font-bold text-pond-text md:text-4xl">また池のほとりで</h2>
     <p class="mt-4 text-base text-pond-muted">新しいプロダクトの話やハッカソンのお誘いなど、お気軽にどうぞ。</p>
     <!-- the address is assembled in the browser so it never appears in the HTML for scrapers -->
-    <div class="mt-8 flex flex-wrap justify-center gap-4" data-email={['moc.liamg', '10etak.akanat'].join('|')}>
-      <button type="button" class="leaf-btn cursor-pointer" data-email-copy>メールアドレスをコピー</button>
-    </div>
-    <p class="mt-2 h-5 font-display text-xs text-pond-muted" aria-live="polite" data-email-status></p>
-    <ul class="mt-6 flex flex-wrap justify-center gap-4">
+    <ul class="mt-8 flex flex-wrap justify-center gap-4" data-email={['moc.liamg', '10etak.akanat'].join('|')}>
+      <li>
+        <button type="button" class="outline-btn cursor-pointer" data-email-copy>メールアドレスをコピー</button>
+      </li>
       <li>
         <a href="https://x.com/Tanakee01" target="_blank" rel="noreferrer" class="outline-btn">X（@Tanakee01）</a>
       </li>
@@ -20,6 +19,7 @@ import Pond from '../components/Pond.jsx'
         <a href="https://github.com/Tanakee" target="_blank" rel="noreferrer" class="outline-btn">GitHub</a>
       </li>
     </ul>
+    <p class="mt-3 h-5 font-display text-xs text-pond-muted" aria-live="polite" data-email-status></p>
   </div>
 
   <Pond
