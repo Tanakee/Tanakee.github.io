@@ -7,9 +7,13 @@ import Pond from '../components/Pond.jsx'
     <p class="font-display text-xs uppercase tracking-[0.3em] text-pond-muted">Contact</p>
     <h2 class="mt-3 font-display text-3xl font-bold text-pond-text md:text-4xl">また池のほとりで</h2>
     <p class="mt-4 text-base text-pond-muted">新しいプロダクトの話やハッカソンのお誘いなど、お気軽にどうぞ。</p>
-    <a href="mailto:tanaka.kate01@gmail.com" class="leaf-btn mt-8">メールで連絡する</a>
-    <p class="mt-3 font-display text-sm text-pond-muted select-all">tanaka.kate01@gmail.com</p>
-    <ul class="mt-8 flex flex-wrap justify-center gap-4">
+    <!-- the address is assembled in the browser so it never appears in the HTML for scrapers -->
+    <div class="mt-8 flex flex-wrap justify-center gap-4" data-email={['moc.liamg', '10etak.akanat'].join('|')}>
+      <a href="#contact" class="leaf-btn" data-email-link>メールで連絡する</a>
+      <button type="button" class="outline-btn cursor-pointer" data-email-copy>アドレスをコピー</button>
+    </div>
+    <p class="mt-2 h-5 font-display text-xs text-pond-muted" aria-live="polite" data-email-status></p>
+    <ul class="mt-6 flex flex-wrap justify-center gap-4">
       <li>
         <a href="https://x.com/Tanakee01" target="_blank" rel="noreferrer" class="outline-btn">X（@Tanakee01）</a>
       </li>
@@ -27,3 +31,23 @@ import Pond from '../components/Pond.jsx'
 
   <footer class="mt-24 text-center text-xs text-pond-muted/70">© {new Date().getFullYear()} Tanakee</footer>
 </section>
+
+<script>
+  const box = document.querySelector('[data-email]')
+  const [domain, user] = box.dataset.email.split('|').map((part) => [...part].reverse().join(''))
+  const address = `${user}@${domain}`
+  const status = document.querySelector('[data-email-status]')
+
+  box.querySelector('[data-email-link]').href = `mailto:${address}`
+  box.querySelector('[data-email-copy]').addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(address)
+      status.textContent = 'コピーしました'
+    } catch {
+      // clipboard access can be blocked (e.g. insecure context); show it so it can be copied by hand
+      status.textContent = address
+    }
+    clearTimeout(status.timer)
+    status.timer = setTimeout(() => (status.textContent = ''), 2500)
+  })
+</script>
