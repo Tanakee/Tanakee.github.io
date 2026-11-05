@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap'
 import tailwindcss from '@tailwindcss/vite'
 import { satteri } from '@astrojs/markdown-satteri'
 import { r2Images } from './src/lib/markdown-r2-images.js'
+import { zennBlocks, zennLineBreaks } from './src/lib/markdown-zenn.js'
 
 export default defineConfig({
   site: 'https://tanakee.com',
@@ -15,7 +16,10 @@ export default defineConfig({
     responsiveStyles: true,
   },
   markdown: {
-    processor: satteri({ mdastPlugins: [r2Images] }),
+    processor: satteri({
+      features: { directive: true },
+      mdastPlugins: [zennBlocks, zennLineBreaks, r2Images],
+    }),
     shikiConfig: {
       theme: 'github-light',
     },

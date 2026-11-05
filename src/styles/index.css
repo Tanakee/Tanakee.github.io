@@ -94,6 +94,52 @@ body {
   border-radius: 1rem;
 }
 
+/* wide tables scroll sideways on phones instead of pushing the page wider */
+.prose-pond :where(table) {
+  display: block;
+  overflow-x: auto;
+}
+
+/* Zenn-style blocks (src/lib/markdown-zenn.js) */
+.prose-pond .zenn-message {
+  margin-block: 1.75em;
+  border-radius: 1rem;
+  border-left: 4px solid var(--color-pond-green);
+  background: color-mix(in srgb, var(--color-pond-green) 8%, var(--color-pond-surface));
+  padding: 0.9em 1.25em;
+  font-size: 0.95em;
+}
+
+.prose-pond .zenn-message-alert {
+  border-left-color: var(--color-pond-pink);
+  background: color-mix(in srgb, var(--color-pond-pink) 8%, var(--color-pond-surface));
+}
+
+.prose-pond .zenn-message > :first-child {
+  margin-top: 0;
+}
+
+.prose-pond .zenn-message > :last-child {
+  margin-bottom: 0;
+}
+
+.prose-pond .zenn-details {
+  margin-block: 1.75em;
+  border: 1px solid var(--color-pond-line);
+  border-radius: 1rem;
+  background: var(--color-pond-surface);
+  padding: 0.75em 1.25em;
+}
+
+.prose-pond .zenn-details > summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.prose-pond .zenn-details[open] > summary {
+  margin-bottom: 0.5em;
+}
+
 /* scroll-in fade; elements stay visible when the script never runs */
 .js [data-reveal] {
   opacity: 0;
