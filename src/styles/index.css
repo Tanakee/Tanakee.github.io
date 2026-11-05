@@ -37,6 +37,10 @@ body {
   @apply inline-flex items-center gap-2 rounded-full border-2 border-pond-pink px-6 py-3 font-display text-sm font-bold text-pond-pink transition-transform duration-200 hover:scale-105 hover:bg-pond-pink/10;
 }
 
+@utility outline-btn {
+  @apply inline-flex items-center gap-2 rounded-full border-2 border-pond-green px-5 py-2.5 font-display text-sm font-bold text-pond-greenDark transition-transform duration-200 hover:scale-105 hover:bg-pond-green/10;
+}
+
 @utility text-link {
   @apply inline-flex items-center gap-1 text-sm font-bold text-pond-greenDark underline decoration-pond-green/40 decoration-2 underline-offset-4 transition-colors hover:text-pond-green;
 }
